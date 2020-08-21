@@ -1,0 +1,194 @@
+<mti>
+  <h1><a href="https://mirrortradinginternational.com/overview/">Mirror Trading International</a></h1>
+  
+  <p>Mirror Trading Internastional (MTI) is a trading company incorporated in South Africa that has been trading since April 2019.</p>
+
+  <p>The company's objective is to grow your Bitcoin. You deposit BTC into your private wallet on MTI's side and they grow your balance by trading in both crypto and forex markets every working day of the week. Daily profits are automatically added to your balance and therefore you earn compound interest daily. As long as the daily trades end in a profit, you continue to grow your investment.</p>
+
+  <p>The minimum deposit requirement is 100 USD, where 200 USD is suggested if your are interested in the referral program, since that automatically qualifies you for various weekly bonuses.</p>
+
+  <p>Below are some charts that indicate the performance potential using actual trading results.</p>
+
+  <p>Note that while the company has been trading since around April 2019, results are only available from 7 November 2019, as per their daily trading announcements on Telegram. Also, you will notice that the dip in results during December, which is due to fewer trading days during holiday season. Of particular interest is how the company has performed during the COVID-19 pandemic, posting only one day of negative trading.</p>
+
+  <style>
+    .chart {
+      padding-top: 50px;
+    }
+  </style>
+
+  <div class="chart">
+    <h3>Daily Results</h3><canvas id="daily-results"></canvas>
+  </div>
+
+  <div class="chart">
+    <h3>3-Day Moving Average</h3><canvas id="3-day-moving-average"></canvas>
+  </div>
+
+  <div class="chart">
+    <h3>Weekly Results</h3>
+    <canvas id="weekly-results"></canvas>
+  </div>
+
+  <div class="chart">
+    <h3>3-Week Moving Average</h3><canvas id="3-week-moving-average"></canvas>
+  </div>
+
+  <div class="chart">
+    <h3>Monthly Results</h3>
+    <canvas id="monthly-results"></canvas>
+  </div>
+
+  <div class="chart">
+    <h3>3-Month Moving Average</h3><canvas id="3-month-moving-average"></canvas>
+  </div>
+
+  <script>
+    import moment from 'moment'
+    import * as ss from 'simple-statistics'
+    import Chart from 'chart.js'
+
+    $(document).ready(function() {
+      $.getJSON('src/data/daily-data.json', function(data) {
+				let stats = calculateStats(data)
+        let ctx = '#daily-results'
+        drawChart(data, stats, ctx, 'Daily Results')
+
+        let movingAverageData = calculateMovingAverage(data, 3)
+        stats = calculateStats(movingAverageData)
+        ctx = '#3-day-moving-average'
+        drawChart(movingAverageData, stats, ctx, '3-Day Moving Average')
+      })
+      $.getJSON('src/data/weekly-data.json', function(data) {
+        let stats = calculateStats(data)
+        let ctx = '#weekly-results'
+        drawChart(data, stats, ctx, 'Weekly Results')
+
+        let movingAverageData = calculateMovingAverage(data, 3)
+        stats = calculateStats(movingAverageData)
+        ctx = '#3-week-moving-average'
+        drawChart(movingAverageData, stats, ctx, '3-Week Moving Average')
+      })
+      $.getJSON('src/data/monthly-data.json', function(data) {
+        let stats = calculateStats(data, 3)
+        let ctx = '#monthly-results'
+        drawChart(data, stats, ctx, 'Monthly Results')
+
+        let movingAverageData = calculateMovingAverage(data, 3)
+        stats = calculateStats(movingAverageData)
+        ctx = '#3-month-moving-average'
+        drawChart(movingAverageData, stats, ctx, '3-Month Moving Average')
+      })
+    })
+
+    function logData(data) {
+      data.forEach(item => console.log("date: " + item.date + ", value: " + item.value))
+    }
+
+    function calculateStats(data) {
+      let values = []
+      data.forEach(item => values.push(item.value))
+
+      let min = ss.min(values)
+      let max = ss.max(values)
+      let mean = ss.mean(values)
+      let variance = ss.variance(values)
+      let standardDeviation = ss.standardDeviation(values)
+
+      // console.log("min: " + min)
+      // console.log("max: " + max)
+      // console.log("mean: " + mean)
+      // console.log("variance: " + variance)
+      // console.log("standard deviation: " + standardDeviation)
+
+      return {mean, standardDeviation}
+    }
+
+    function calculateMovingAverage(array, numberOfDays) {
+      let total = 0
+      let average = 0
+      let outArray = []
+
+      for (let index = 0; index < array.length; index++) {
+        total = total + array[index].value
+
+        if ((index + 1) % numberOfDays == 0) {
+
+          average = total / numberOfDays
+          outArray.push({date: array[index].date, value: average})
+          total = 0
+        }
+      }
+
+      return outArray
+    }
+
+    function drawChart(data, stats, ctxID, label) {
+      let labels = []
+      let values = []
+      let meanValues = []
+      let sdUpperValues = [], sdLowerValues = []
+      let sdUpperValue, sdLowerValue
+
+      const chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+      }
+
+      sdUpperValue = stats.mean + stats.standardDeviation
+      sdLowerValue = stats.mean - stats.standardDeviation
+
+      data.forEach((item) => {
+        labels.push(item.date)
+        values.push(item.value)
+      })
+
+      values.forEach(() => {
+        meanValues.push(stats.mean.toFixed(4))
+        sdUpperValues.push(sdUpperValue.toFixed(2))
+        sdLowerValues.push(sdLowerValue.toFixed(2))
+      })
+
+      // let ctx = $('#daily-results')
+      let ctx = $(ctxID)
+      let dailyChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: label,
+            backgroundColor: chartColors.red,
+            borderColor: chartColors.red,
+            data: values
+          }, {
+            label: 'Mean',
+            backgroundColor: chartColors.blue,
+            borderColor: chartColors.blue,
+            borderWidth: 3,
+            fill: false,
+            data: meanValues
+          }, {
+            label: 'Standard Deviation (Upper)',
+            backgroundColor: chartColors.blue,
+            borderColor: chartColors.blue,
+            borderWidth: 3,
+            fill: false,
+            data: sdUpperValues
+          }, {
+            label: 'Standard Deviation (Lower)',
+            backgroundColor: chartColors.blue,
+            borderColor: chartColors.blue,
+            borderWidth: 3,
+            fill: false,
+            data: sdLowerValues
+          }]
+        }
+      })
+    }
+  </script>
+</mti>
