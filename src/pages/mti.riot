@@ -114,7 +114,7 @@
 
         if ((index + 1) % numberOfDays == 0) {
 
-          average = (total / numberOfDays).toFixed(4)
+          average = total / numberOfDays
           outArray.push({date: array[index].date, value: average})
           total = 0
         }
@@ -145,13 +145,13 @@
 
       data.forEach((item) => {
         labels.push(item.date)
-        values.push(item.value)
+        values.push(item.value.toFixed(4))
       })
 
       values.forEach(() => {
         meanValues.push(stats.mean.toFixed(4))
-        sdUpperValues.push(sdUpperValue.toFixed(2))
-        sdLowerValues.push(sdLowerValue.toFixed(2))
+        sdUpperValues.push(sdUpperValue.toFixed(4))
+        sdLowerValues.push(sdLowerValue.toFixed(4))
       })
 
       // let ctx = $('#daily-results')
