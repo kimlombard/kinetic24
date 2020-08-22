@@ -18,29 +18,39 @@
   </style>
 
   <div class="chart">
-    <h3>Daily Results</h3><canvas id="daily-results"></canvas>
+    <h3>Daily Results</h3>
+    <p id="daily-results-stats"></p>
+    <canvas id="daily-results"></canvas>
   </div>
 
   <div class="chart">
-    <h3>3-Day Moving Average</h3><canvas id="3-day-moving-average"></canvas>
+    <h3>3-Day Moving Average</h3>
+    <p id="3-day-moving-average-stats"></p>
+    <canvas id="3-day-moving-average"></canvas>
   </div>
 
   <div class="chart">
     <h3>Weekly Results</h3>
+    <p id="weekly-results-stats"></p>
     <canvas id="weekly-results"></canvas>
   </div>
 
   <div class="chart">
-    <h3>3-Week Moving Average</h3><canvas id="3-week-moving-average"></canvas>
+    <h3>3-Week Moving Average</h3>
+    <p id="3-week-moving-average-stats"></p>
+    <canvas id="3-week-moving-average"></canvas>
   </div>
 
   <div class="chart">
     <h3>Monthly Results</h3>
+    <p id="monthly-results-stats"></p>
     <canvas id="monthly-results"></canvas>
   </div>
 
   <div class="chart">
-    <h3>3-Month Moving Average</h3><canvas id="3-month-moving-average"></canvas>
+    <h3>3-Month Moving Average</h3>
+    <p id="3-month-moving-average-stats"></p>
+    <canvas id="3-month-moving-average"></canvas>
   </div>
 
   <script>
@@ -52,31 +62,83 @@
       $.getJSON('src/data/daily-data.json', function(data) {
 				let stats = calculateStats(data)
         let ctx = '#daily-results'
+
+        $('#daily-results-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(data, stats, ctx, 'Daily Results')
 
+
+        
         let movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-day-moving-average'
+
+        $('#3-day-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(movingAverageData, stats, ctx, '3-Day Moving Average')
       })
       $.getJSON('src/data/weekly-data.json', function(data) {
         let stats = calculateStats(data)
         let ctx = '#weekly-results'
+
+        $('#weekly-results-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(data, stats, ctx, 'Weekly Results')
+
+
 
         let movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-week-moving-average'
+
+        $('#3-week-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(movingAverageData, stats, ctx, '3-Week Moving Average')
       })
       $.getJSON('src/data/monthly-data.json', function(data) {
         let stats = calculateStats(data, 3)
         let ctx = '#monthly-results'
+
+        $('#monthly-results-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(data, stats, ctx, 'Monthly Results')
 
         let movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-month-moving-average'
+
+        $('#3-month-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
         drawChart(movingAverageData, stats, ctx, '3-Month Moving Average')
       })
     })
@@ -101,7 +163,7 @@
       // console.log("variance: " + variance)
       // console.log("standard deviation: " + standardDeviation)
 
-      return {mean, standardDeviation}
+      return {min, max, mean, variance, standardDeviation}
     }
 
     function calculateMovingAverage(array, numberOfDays) {
