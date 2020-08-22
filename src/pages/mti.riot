@@ -114,7 +114,7 @@
 
         if ((index + 1) % numberOfDays == 0) {
 
-          average = total / numberOfDays
+          average = (total / numberOfDays).toFixed(4)
           outArray.push({date: array[index].date, value: average})
           total = 0
         }
