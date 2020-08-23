@@ -76,111 +76,51 @@
 
     $(document).ready(function() {
       $.getJSON('src/data/daily-data.json', function(data) {
-				let stats = calculateStats(data)
-        let ctx = '#daily-results'
-
-        $('#daily-results-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        let stats = calculateStats(data)
+				let ctx = '#daily-results'
+        $('#daily-results-stats').html(statsForNerds(data, stats))
         drawChart(data, stats, ctx, 'Daily Results')
 
-
-        
         let movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-day-moving-average'
-
-        $('#3-day-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#3-day-moving-average-stats').html(statsForNerds(data, stats))
         drawChart(movingAverageData, stats, ctx, '3-Day Moving Average')
       })
       $.getJSON('src/data/weekly-data.json', function(data) {
         let stats = calculateStats(data)
         let ctx = '#weekly-results'
-
-        $('#weekly-results-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#weekly-results-stats').html(statsForNerds(data, stats))
         drawChart(data, stats, ctx, 'Weekly Results')
-
-
 
         let movingAverageData = calculateMovingAverage(data, 2)
         stats = calculateStats(movingAverageData)
         ctx = '#2-week-moving-average'
-
-        $('#2-week-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#2-week-moving-average-stats').html(statsForNerds(data, stats))
         drawChart(movingAverageData, stats, ctx, '2-Week Moving Average')
 
         movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-week-moving-average'
-
-        $('#3-week-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#3-week-moving-average-stats').html(statsForNerds(data, stats))
         drawChart(movingAverageData, stats, ctx, '3-Week Moving Average')
       })
       $.getJSON('src/data/monthly-data.json', function(data) {
         let stats = calculateStats(data, 3)
         let ctx = '#monthly-results'
-
-        $('#monthly-results-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#monthly-results-stats').html(statsForNerds(data, stats))
         drawChart(data, stats, ctx, 'Monthly Results')
 
         let movingAverageData = calculateMovingAverage(data, 2)
         stats = calculateStats(movingAverageData)
         ctx = '#2-month-moving-average'
-
-        $('#2-month-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#2-month-moving-average-stats').html(statsForNerds(data, stats))
         drawChart(movingAverageData, stats, ctx, '2-Month Moving Average')
 
         movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-month-moving-average'
-
-        $('#3-month-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
-          "min: " + stats.min.toFixed(4) + "<br>" +
-          "mean: " + stats.mean.toFixed(4) + "<br>" +
-          "max: " + stats.max.toFixed(4) + "<br>" +
-          "variance: " + stats.variance.toFixed(4) + "<br>" +
-          "standard deviation: " + stats.standardDeviation.toFixed(4))
-
+        $('#3-month-moving-average-stats').html(statsForNerds(data, stats))
         drawChart(movingAverageData, stats, ctx, '3-Month Moving Average')
       })      
     })
@@ -198,6 +138,10 @@
       let mean = ss.mean(values)
       let variance = ss.variance(values)
       let standardDeviation = ss.standardDeviation(values)
+      let sd1_LowerValue = mean - standardDeviation
+      let sd1_UpperValue = mean + standardDeviation
+      let sd2_LowerValue = mean - (standardDeviation * 2)
+      let sd2_UpperValue = mean + (standardDeviation * 2)
 
       // console.log("min: " + min)
       // console.log("max: " + max)
@@ -205,7 +149,7 @@
       // console.log("variance: " + variance)
       // console.log("standard deviation: " + standardDeviation)
 
-      return {min, max, mean, variance, standardDeviation}
+      return {min, max, mean, variance, standardDeviation, sd1_LowerValue, sd1_UpperValue, sd2_LowerValue, sd2_UpperValue}
     }
 
     function calculateMovingAverage(array, numberOfDays) {
@@ -227,17 +171,49 @@
       return outArray
     }
 
-    $('#daily-results-reset-zoom').click(function() {
-      console.log('reset zoom clicked')
-      window.myChart.resetZoom()
-    })
+    function statsForNerds(data, stats) {
+      let html = `
+        <table>
+          <caption><b>Stats for Nerds</b></caption>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>min: ${stats.min.toFixed(4)}</td>
+              <td>mean: ${stats.mean.toFixed(4)}</td>
+              <td>max: ${stats.max.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>variance: ${stats.variance.toFixed(4)}</td>
+              <td colspan="2">standard deviation: ${stats.standardDeviation.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>standard deviation 68% (lower): ${stats.sd1_LowerValue.toFixed(4)}</td>
+              <td colspan="2">standard deviation 68% (upper): ${stats.sd1_UpperValue.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>standard deviation 95% (lower): ${stats.sd2_LowerValue.toFixed(4)}</td>
+              <td colspan="2">standard deviation 95% (upper): ${stats.sd2_UpperValue.toFixed(4)}</td>
+            </tr>
+          </tbody>
+        </table>`
+
+        return html
+    }
 
     function drawChart(data, stats, ctxID, label) {
       let labels = []
       let values = []
       let meanValues = []
-      let sdUpperValues = [], sdLowerValues = []
-      let sdUpperValue, sdLowerValue
+      let sd1_UpperValues = [], sd1_LowerValues = []
+      let sd2_UpperValues = [], sd2_LowerValues = []
+      let sd1_UpperValue, sd1_LowerValue
+      let sd2_UpperValue, sd2_LowerValue
 
       const chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -249,8 +225,10 @@
         grey: 'rgb(201, 203, 207)'
       }
 
-      sdUpperValue = stats.mean + stats.standardDeviation
-      sdLowerValue = stats.mean - stats.standardDeviation
+      sd1_UpperValue = stats.mean + stats.standardDeviation
+      sd1_LowerValue = stats.mean - stats.standardDeviation
+      sd2_UpperValue = stats.mean + (stats.standardDeviation * 2)
+      sd2_LowerValue = stats.mean - (stats.standardDeviation * 2)
 
       data.forEach((item) => {
         labels.push(item.date)
@@ -259,8 +237,12 @@
 
       values.forEach(() => {
         meanValues.push(stats.mean.toFixed(4))
-        sdUpperValues.push(sdUpperValue.toFixed(4))
-        sdLowerValues.push(sdLowerValue.toFixed(4))
+
+        sd1_UpperValues.push(sd1_UpperValue.toFixed(4))
+        sd1_LowerValues.push(sd1_LowerValue.toFixed(4))
+
+        sd2_UpperValues.push(sd2_UpperValue.toFixed(4))
+        sd2_LowerValues.push(sd2_LowerValue.toFixed(4))
       })
 
       // let ctx = $('#daily-results')
@@ -278,25 +260,39 @@
             data: values
           }, {
             label: 'Mean',
-            backgroundColor: chartColors.blue,
-            borderColor: chartColors.blue,
+            backgroundColor: chartColors.grey,
+            borderColor: chartColors.grey,
             borderWidth: 3,
             fill: false,
             data: meanValues
           }, {
-            label: 'Standard Deviation (Upper)',
+            label: 'Standard Deviation 68% (Upper)',
             backgroundColor: chartColors.blue,
             borderColor: chartColors.blue,
             borderWidth: 3,
             fill: false,
-            data: sdUpperValues
+            data: sd1_UpperValues
           }, {
-            label: 'Standard Deviation (Lower)',
+            label: 'Standard Deviation 68% (Lower)',
             backgroundColor: chartColors.blue,
             borderColor: chartColors.blue,
             borderWidth: 3,
             fill: false,
-            data: sdLowerValues
+            data: sd1_LowerValues
+          }, {
+            label: 'Standard Deviation 95% (Upper)',
+            backgroundColor: chartColors.purple,
+            borderColor: chartColors.purple,
+            borderWidth: 3,
+            fill: false,
+            data: sd2_UpperValues
+          }, {
+            label: 'Standard Deviation 95% (Lower)',
+            backgroundColor: chartColors.purple,
+            borderColor: chartColors.purple,
+            borderWidth: 3,
+            fill: false,
+            data: sd2_LowerValues
           }],
         },
         options: {
