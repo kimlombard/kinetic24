@@ -13,41 +13,57 @@
 
   <div class="chart">
     <h3>Daily Results</h3>
-    <p id="daily-results-stats"></p>
+    <p class="stats" id="daily-results-stats"></p>
     <canvas id="daily-results"></canvas>
   </div>
 
   <div class="chart">
     <h3>3-Day Moving Average</h3>
-    <p id="3-day-moving-average-stats"></p>
+    <p class="stats" id="3-day-moving-average-stats"></p>
     <canvas id="3-day-moving-average"></canvas>
   </div>
 
   <div class="chart">
     <h3>Weekly Results</h3>
-    <p id="weekly-results-stats"></p>
+    <p class="stats" id="weekly-results-stats"></p>
     <canvas id="weekly-results"></canvas>
   </div>
 
   <div class="chart">
+    <h3>2-Week Moving Average</h3>
+    <p class="stats" id="2-week-moving-average-stats"></p>
+    <canvas id="2-week-moving-average"></canvas>
+  </div>
+
+  <div class="chart">
     <h3>3-Week Moving Average</h3>
-    <p id="3-week-moving-average-stats"></p>
+    <p class="stats" id="3-week-moving-average-stats"></p>
     <canvas id="3-week-moving-average"></canvas>
   </div>
 
   <div class="chart">
     <h3>Monthly Results</h3>
-    <p id="monthly-results-stats"></p>
+    <p class="stats" id="monthly-results-stats"></p>
     <canvas id="monthly-results"></canvas>
   </div>
 
   <div class="chart">
+    <h3>2-Month Moving Average</h3>
+    <p class="stats" id="2-month-moving-average-stats"></p>
+    <canvas id="2-month-moving-average"></canvas>
+  </div>
+
+  <div class="chart">
     <h3>3-Month Moving Average</h3>
-    <p id="3-month-moving-average-stats"></p>
+    <p class="stats" id="3-month-moving-average-stats"></p>
     <canvas id="3-month-moving-average"></canvas>
   </div>
 
   <style>
+    .stats {
+      font-size: small;
+    }
+
     .chart {
       padding-top: 50px;
     }
@@ -102,7 +118,20 @@
 
 
 
-        let movingAverageData = calculateMovingAverage(data, 3)
+        let movingAverageData = calculateMovingAverage(data, 2)
+        stats = calculateStats(movingAverageData)
+        ctx = '#2-week-moving-average'
+
+        $('#2-week-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
+        drawChart(movingAverageData, stats, ctx, '2-Week Moving Average')
+
+        movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-week-moving-average'
 
@@ -128,7 +157,20 @@
 
         drawChart(data, stats, ctx, 'Monthly Results')
 
-        let movingAverageData = calculateMovingAverage(data, 3)
+        let movingAverageData = calculateMovingAverage(data, 2)
+        stats = calculateStats(movingAverageData)
+        ctx = '#2-month-moving-average'
+
+        $('#2-month-moving-average-stats').html("<b>Stats for Nerds</b><br>" + 
+          "min: " + stats.min.toFixed(4) + "<br>" +
+          "mean: " + stats.mean.toFixed(4) + "<br>" +
+          "max: " + stats.max.toFixed(4) + "<br>" +
+          "variance: " + stats.variance.toFixed(4) + "<br>" +
+          "standard deviation: " + stats.standardDeviation.toFixed(4))
+
+        drawChart(movingAverageData, stats, ctx, '2-Month Moving Average')
+
+        movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-month-moving-average'
 
@@ -140,7 +182,7 @@
           "standard deviation: " + stats.standardDeviation.toFixed(4))
 
         drawChart(movingAverageData, stats, ctx, '3-Month Moving Average')
-      })
+      })      
     })
 
     function logData(data) {
@@ -185,6 +227,11 @@
       return outArray
     }
 
+    $('#daily-results-reset-zoom').click(function() {
+      console.log('reset zoom clicked')
+      window.myChart.resetZoom()
+    })
+
     function drawChart(data, stats, ctxID, label) {
       let labels = []
       let values = []
@@ -218,7 +265,8 @@
 
       // let ctx = $('#daily-results')
       let ctx = $(ctxID)
-      let dailyChart = new Chart(ctx, {
+      
+      const config = {
         type: 'line',
         data: {
           labels: labels,
@@ -226,6 +274,7 @@
             label: label,
             backgroundColor: chartColors.red,
             borderColor: chartColors.red,
+            fill: false,
             data: values
           }, {
             label: 'Mean',
@@ -248,9 +297,16 @@
             borderWidth: 3,
             fill: false,
             data: sdLowerValues
-          }]
+          }],
+        },
+        options: {
+          responsive: true
         }
-      })
+      }
+
+      let myChart = new Chart(ctx, config)
+      // window.myChart = new Chart(ctx, config)
+      // return myChart
     }
   </script>
 </mti>
