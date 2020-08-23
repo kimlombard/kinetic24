@@ -18,6 +18,12 @@
   </div>
 
   <div class="chart">
+    <h3>2-Day Moving Average</h3>
+    <p class="stats" id="2-day-moving-average-stats"></p>
+    <canvas id="2-day-moving-average"></canvas>
+  </div>
+
+  <div class="chart">
     <h3>3-Day Moving Average</h3>
     <p class="stats" id="3-day-moving-average-stats"></p>
     <canvas id="3-day-moving-average"></canvas>
@@ -81,7 +87,13 @@
         $('#daily-results-stats').html(statsForNerds(data, stats))
         drawChart(data, stats, ctx, 'Daily Results')
 
-        let movingAverageData = calculateMovingAverage(data, 3)
+        let movingAverageData = calculateMovingAverage(data, 2)
+        stats = calculateStats(movingAverageData)
+        ctx = '#2-day-moving-average'
+        $('#2-day-moving-average-stats').html(statsForNerds(data, stats))
+        drawChart(movingAverageData, stats, ctx, '2-Day Moving Average')
+
+        movingAverageData = calculateMovingAverage(data, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-day-moving-average'
         $('#3-day-moving-average-stats').html(statsForNerds(data, stats))
