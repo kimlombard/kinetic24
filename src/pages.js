@@ -12,7 +12,13 @@ export default [{
   path: '/mti',
   label: 'MTI',
   componentName: 'mti'
-}, {
+},
+{
+  path: '/currently-reviewing',
+  label: 'Currently Reviewing',
+  componentName: 'currently-reviewing'
+},
+{
   path: '/contact',
   label: 'Contact',
   componentName: 'contact'
