@@ -69,14 +69,8 @@
       <button class="button button-clear" id="show-2-day-moving-average-stats">Show Stats</button>
       <button class="button button-clear" id="hide-2-day-moving-average-stats">Hide Stats</button>
     </div>
-      <p class="stats" id="2-day-moving-average-stats"></p>
+    <p class="stats" id="2-day-moving-average-stats"></p>
     <div class="row">
-      <div class="column">
-        <button class="button" id="1w-2-day-moving-average">1w</button>
-      </div>
-      <div class="column">
-        <button class="button" id="2w-2-day-moving-average">2w</button>
-      </div>
       <div class="column">
         <button class="button" id="1m-2-day-moving-average">1m</button>
       </div>
@@ -112,12 +106,6 @@
     </div>
     <p class="stats" id="3-day-moving-average-stats"></p>
     <div class="row">
-      <div class="column">
-        <button class="button" id="1w-3-day-moving-average">1w</button>
-      </div>
-      <div class="column">
-        <button class="button" id="2w-3-day-moving-average">2w</button>
-      </div>
       <div class="column">
         <button class="button" id="1m-3-day-moving-average">1m</button>
       </div>
@@ -235,8 +223,8 @@
   <div class="chart">
     <h3>Monthly Results</h3>
     <div>
-      <button class="button button-clear" id="show-2-month-moving-average-stats">Show Stats</button>
-      <button class="button button-clear" id="hide-2-month-moving-average-stats">Hide Stats</button>
+      <button class="button button-clear" id="show-monthly-results-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-monthly-results-stats">Hide Stats</button>
     </div>
     <p class="stats" id="monthly-results-stats"></p>
     <div class="row">
@@ -261,8 +249,8 @@
   <div class="chart">
     <h3>2-Month Moving Average</h3>
     <div>
-      <button class="button button-clear" id="show-3-month-moving-average-stats">Show Stats</button>
-      <button class="button button-clear" id="hide-3-month-moving-average-stats">Hide Stats</button>
+      <button class="button button-clear" id="show-2-month-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-2-month-moving-average-stats">Hide Stats</button>
     </div>
     <p class="stats" id="2-month-moving-average-stats"></p>
     <div class="row">
@@ -283,6 +271,10 @@
 
   <div class="chart">
     <h3>3-Month Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-3-month-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-3-month-moving-average-stats">Hide Stats</button>
+    </div>
     <p class="stats" id="3-month-moving-average-stats"></p>
     <div is="3-month-moving-average-wrapper">
       <canvas id="3-month-moving-average"></canvas>
@@ -312,7 +304,7 @@
       $.getJSON('src/data/mti/mti-data.json', function(data) {
         let stats = calculateStats(data.daily)
 				let ctx = '#daily-results'
-        $('#daily-results-stats').html(statsForNerds(data.daily, stats))
+        $('#daily-results-stats').html(statsForNerds(stats))
         drawChart(data.daily, stats, ctx, 'Daily Results', 'all')
 
         // Hide stats for nerds
@@ -332,8 +324,10 @@
         })
         
         $('#1w-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-1w')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -341,8 +335,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-1w')
         })
         $('#2w-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-2w')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -350,8 +346,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-2w')
         })
         $('#1m-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-1m')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -359,8 +357,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-1m')
         })
         $('#2m-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-2m')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -368,8 +368,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-2m')
         })
         $('#90d-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-90d')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -377,8 +379,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-90d')
         })
         $('#3m-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-3m')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -386,8 +390,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-3m')
         })
         $('#6m-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-6m')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -395,8 +401,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-6m')
         })
         $('#9m-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-9m')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -404,8 +412,10 @@
           drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-9m')
         })
         $('#all-daily-results').click(function() {
-          let stats = calculateStats(data.daily)
+          let stats = calculateStats(data.daily, 'daily-all')
           let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
 
           $('#daily-results').remove()
           $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
@@ -416,9 +426,9 @@
         // 2-Day Moving Average
 
         let movingAverageData = calculateMovingAverage(data.daily, 2)
-        stats = calculateStats(movingAverageData)
+        stats = calculateStats(movingAverageData, '2-day-moving-average-all')
         ctx = '#2-day-moving-average'
-        $('#2-day-moving-average-stats').html(statsForNerds(data.daily, stats))
+        $('#2-day-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '2-Day Moving Average', 'all')
 
         // Hide stats for nerds
@@ -438,90 +448,84 @@
         })
 
 
-        $('#1w-2-day-moving-average').click(function() {
-          let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
-          let ctx = '#2-day-moving-average'
-
-          $('#2-day-moving-average').remove()
-          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
-
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-1w')
-        })
-        $('#2w-2-day-moving-average').click(function() {
-          let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
-          let ctx = '#2-day-moving-average'
-
-          $('#2-day-moving-average').remove()
-          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
-
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-2w')
-        })
         $('#1m-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-1m')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-1m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-1m')
         })
         $('#2m-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-2m')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-2m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-2m')
         })
         $('#90d-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-90d')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-90d')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-90d')
         })
         $('#3m-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-3m')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-3m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-3m')
         })
         $('#6m-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-6m')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-6m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-6m')
         })
         $('#9m-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-9m')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-9m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-9m')
         })
         $('#all-2-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-all')
           let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-day-moving-average').remove()
           $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
@@ -532,9 +536,9 @@
         // 3-Day Moving Average
 
         movingAverageData = calculateMovingAverage(data.daily, 3)
-        stats = calculateStats(movingAverageData)
+        stats = calculateStats(movingAverageData, '3-day-moving-average-all')
         ctx = '#3-day-moving-average'
-        $('#3-day-moving-average-stats').html(statsForNerds(data.daily, stats))
+        $('#3-day-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '3-Day Moving Average')
 
         // Hide stats for nerds
@@ -553,90 +557,84 @@
           })
         })
 
-        $('#1w-3-day-moving-average').click(function() {
-          let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
-          let ctx = '#3-day-moving-average'
-
-          $('#3-day-moving-average').remove()
-          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
-
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-1w')
-        })
-        $('#2w-3-day-moving-average').click(function() {
-          let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
-          let ctx = '#3-day-moving-average'
-
-          $('#3-day-moving-average').remove()
-          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
-
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-2w')
-        })
         $('#1m-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-1m')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-1m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-1m')
         })
         $('#2m-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-2m')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-2m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-2m')
         })
         $('#90d-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-90d')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-90d')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-90d')
         })
         $('#3m-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-3m')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-3m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-3m')
         })
         $('#6m-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-6m')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-6m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-6m')
         })
         $('#9m-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-9m')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
 
-          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'daily-9m')
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-9m')
         })
         $('#all-3-day-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.daily, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-all')
           let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-day-moving-average').remove()
           $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
@@ -645,9 +643,9 @@
         })
       })
       $.getJSON('src/data/mti/mti-data.json', function(data) {
-        let stats = calculateStats(data.weekly)
+        let stats = calculateStats(data.weekly, 'weekly-all')
         let ctx = '#weekly-results'
-        $('#weekly-results-stats').html(statsForNerds(data.weekly, stats))
+        $('#weekly-results-stats').html(statsForNerds(stats))
         drawChart(data.weekly, stats, ctx, 'Weekly Results', 'all')
 
         // Hide stats
@@ -667,8 +665,10 @@
         })
 
         $('#1m-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-1m')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -676,8 +676,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-1m')
         })
         $('#2m-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-2m')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -685,8 +687,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-2m')
         })
         $('#90d-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-90d')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -694,8 +698,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-90d')
         })
         $('#3m-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-3m')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -703,8 +709,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-3m')
         })
         $('#6m-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-6m')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -712,8 +720,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-6m')
         })
         $('#9m-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-9m')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -721,8 +731,10 @@
           drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-9m')
         })
         $('#all-weekly-results').click(function() {
-          let stats = calculateStats(data.weekly)
+          let stats = calculateStats(data.weekly, 'weekly-all')
           let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
 
           $('#weekly-results').remove()
           $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
@@ -733,9 +745,9 @@
         // 2-Week Moving Average
 
         let movingAverageData = calculateMovingAverage(data.weekly, 2)
-        stats = calculateStats(movingAverageData)
+        stats = calculateStats(movingAverageData, 'all')
         ctx = '#2-week-moving-average'
-        $('#2-week-moving-average-stats').html(statsForNerds(data.weekly, stats))
+        $('#2-week-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', 'all')
 
         // Hide stats
@@ -756,8 +768,10 @@
 
         $('#3m-2-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-3m')
           let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-week-moving-average').remove()
           $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
@@ -766,8 +780,10 @@
         })
         $('#6m-2-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-6m')
           let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-week-moving-average').remove()
           $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
@@ -776,8 +792,10 @@
         })
         $('#9m-2-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-9m')
           let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-week-moving-average').remove()
           $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
@@ -786,8 +804,10 @@
         })
         $('#all-2-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-all')
           let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-week-moving-average').remove()
           $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
@@ -798,9 +818,9 @@
         // 3-Week Moving Average
 
         movingAverageData = calculateMovingAverage(data.weekly, 3)
-        stats = calculateStats(movingAverageData)
+        stats = calculateStats(movingAverageData, '3-week-moving-average-all')
         ctx = '#3-week-moving-average'
-        $('#3-week-moving-average-stats').html(statsForNerds(data.weekly, stats))
+        $('#3-week-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '3-week Moving Average')
 
         // Hide stats
@@ -821,8 +841,10 @@
 
         $('#3m-3-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-3m')
           let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-week-moving-average').remove()
           $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
@@ -831,8 +853,10 @@
         })
         $('#6m-3-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-6m')
           let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-week-moving-average').remove()
           $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
@@ -841,8 +865,10 @@
         })
         $('#9m-3-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-9m')
           let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-week-moving-average').remove()
           $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
@@ -851,8 +877,10 @@
         })
         $('#all-3-week-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.weekly, 3)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-all')
           let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-week-moving-average').remove()
           $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
@@ -861,9 +889,9 @@
         })
       })
       $.getJSON('src/data/mti/mti-data.json', function(data) {
-        let stats = calculateStats(data.monthly)
+        let stats = calculateStats(data.monthly, 'all')
         let ctx = '#monthly-results'
-        $('#monthly-results-stats').html(statsForNerds(data.monthly, stats))
+        $('#monthly-results-stats').html(statsForNerds(stats))
         drawChart(data.monthly, stats, ctx, 'Monthly Results', 'all')
 
         // Hide stats for nerds
@@ -883,8 +911,10 @@
         })
 
         $('#3m-monthly-results').click(function() {
-          let stats = calculateStats(data.monthly)
+          let stats = calculateStats(data.monthly, 'monthly-3m')
           let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
 
           $('#monthly-results').remove()
           $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
@@ -892,8 +922,10 @@
           drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-3m')
         })
         $('#6m-monthly-results').click(function() {
-          let stats = calculateStats(data.monthly)
+          let stats = calculateStats(data.monthly, 'monthly-6m')
           let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
 
           $('#monthly-results').remove()
           $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
@@ -901,8 +933,10 @@
           drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-6m')
         })
         $('#9m-monthly-results').click(function() {
-          let stats = calculateStats(data.monthly)
+          let stats = calculateStats(data.monthly, 'monthly-9m')
           let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
 
           $('#monthly-results').remove()
           $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
@@ -910,8 +944,10 @@
           drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-9m')
         })
         $('#all-monthly-results').click(function() {
-          let stats = calculateStats(data.monthly)
+          let stats = calculateStats(data.monthly, 'all')
           let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
 
           $('#monthly-results').remove()
           $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
@@ -922,31 +958,33 @@
         // 2-Monthly Moving Average
 
         let movingAverageData = calculateMovingAverage(data.monthly, 2)
-        stats = calculateStats(movingAverageData)
+        stats = calculateStats(movingAverageData, 'all')
         ctx = '#2-month-moving-average'
-        $('#2-month-moving-average-stats').html(statsForNerds(data.monthly, stats))
+        $('#2-month-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '2-Month Moving Average', 'all')
 
         // Hide stats
         $('#2-month-moving-average-stats').hide()
 
         // Toggle stats
-        $('#show-#2-month-moving-average-stats').click(function() {
-          $('##2-month-moving-average-stats').slideDown('slow', function() {
+        $('#show-2-month-moving-average-stats').click(function() {
+          $('#2-month-moving-average-stats').slideDown('slow', function() {
             // Animation complete.
           })
         })
 
-        $('#hide-#2-month-moving-average-stats').click(function() {
-          $('##2-month-moving-average-stats').slideUp('slow', function() {
+        $('#hide-2-month-moving-average-stats').click(function() {
+          $('#2-month-moving-average-stats').slideUp('slow', function() {
             // Animation complete.
           })
         })
 
         $('#6m-2-month-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.monthly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-month-moving-average-6m')
           let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-month-moving-average').remove()
           $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
@@ -955,8 +993,10 @@
         })
         $('#9m-2-month-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.monthly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, '2-month-moving-average-9m')
           let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-month-moving-average').remove()
           $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
@@ -965,8 +1005,10 @@
         })
         $('#all-2-month-moving-average').click(function() {
           let movingAverageData = calculateMovingAverage(data.monthly, 2)
-          let stats = calculateStats(movingAverageData)
+          let stats = calculateStats(movingAverageData, 'all')
           let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
 
           $('#2-month-moving-average').remove()
           $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
@@ -979,7 +1021,7 @@
         movingAverageData = calculateMovingAverage(data.monthly, 3)
         stats = calculateStats(movingAverageData)
         ctx = '#3-month-moving-average'
-        $('#3-month-moving-average-stats').html(statsForNerds(data.monthly, stats))
+        $('#3-month-moving-average-stats').html(statsForNerds(stats))
         drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', 'all')
 
         // Hide stats
@@ -1003,6 +1045,8 @@
           let stats = calculateStats(movingAverageData)
           let ctx = '#3-month-moving-average'
 
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
+
           $('#3-month-moving-average').remove()
           $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
 
@@ -1012,6 +1056,8 @@
           let movingAverageData = calculateMovingAverage(data.monthly, 3)
           let stats = calculateStats(movingAverageData)
           let ctx = '#3-month-moving-average'
+
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
 
           $('#3-month-moving-average').remove()
           $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
@@ -1023,23 +1069,13 @@
           let stats = calculateStats(movingAverageData)
           let ctx = '#3-month-moving-average'
 
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
+
           $('#3-month-moving-average').remove()
           $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
 
           drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', 'all')
         })
-
-      //   let movingAverageData = calculateMovingAverage(data, 2)
-      //   stats = calculateStats(movingAverageData)
-      //   ctx = '#2-month-moving-average'
-      //   $('#2-month-moving-average-stats').html(statsForNerds(data, stats))
-      //   drawChart(movingAverageData, stats, ctx, '2-Month Moving Average')
-
-      //   movingAverageData = calculateMovingAverage(data, 3)
-      //   stats = calculateStats(movingAverageData)
-      //   ctx = '#3-month-moving-average'
-      //   $('#3-month-moving-average-stats').html(statsForNerds(data, stats))
-      //   drawChart(movingAverageData, stats, ctx, '3-Month Moving Average')
       })
     })
 
@@ -1047,9 +1083,133 @@
       data.forEach(item => console.log("date: " + item.date + ", value: " + item.value))
     }
 
-    function calculateStats(data) {
+    function calculateStats(data, duration) {
       let values = []
       data.forEach(item => values.push(item.value))
+
+      switch (duration) {
+        case 'daily-1w':
+          values = values.slice(-5)
+          // console.log(values)
+          break
+        case 'daily-2w':
+          values = values.slice(-10)
+          break
+        case 'daily-1m':
+          values = values.slice(-20)
+          break
+        case 'daily-2m':
+          values = values.slice(-40)
+          break
+        case 'daily-90d':
+          values = values.slice(-50)
+          break
+        case 'daily-3m':
+          values = values.slice(-60)
+          break
+        case 'daily-6m':
+          values = values.slice(-120)
+          break
+        case 'daily-9m':
+          values = values.slice(-180)
+          break
+        case '2-day-moving-average-1m':
+          values = values.slice(-13)
+        break
+        case '2-day-moving-average-2m':
+          values = values.slice(-22)
+        break
+        case '2-day-moving-average-90d':
+          values = values.slice(-28)
+        break
+        case '2-day-moving-average-3m':
+          values = values.slice(-35)
+        break
+        case '2-day-moving-average-6m':
+          values = values.slice(-67)
+        break
+        case '2-day-moving-average-9m':
+          values = values.slice(-100)
+        break
+        case '3-day-moving-average-1m':
+          values = values.slice(-9)
+        break
+        case '3-day-moving-average-2m':
+          values = values.slice(-16)
+        break
+        case '3-day-moving-average-90d':
+          values = values.slice(-19)
+        break
+        case '3-day-moving-average-3m':
+          values = values.slice(-23)
+        break
+        case '3-day-moving-average-6m':
+          values = values.slice(-45)
+        break
+        case '3-day-moving-average-9m':
+          values = values.slice(-65)
+        break
+        case 'weekly-1m':
+          values = values.slice(-4)
+          break
+        case 'weekly-2m':
+          values = values.slice(-8)
+          break
+        case 'weekly-90d':
+          values = values.slice(-10)
+          break
+        case 'weekly-3m':
+          values = values.slice(-12)
+          break
+        case 'weekly-6m':
+          values = values.slice(-24)
+          break
+        case 'weekly-9m':
+          values = values.slice(-36)
+          break
+        case '2-week-moving-average-3m':
+          values = values.slice(-8)
+          break
+        case '2-week-moving-average-6m':
+          values = values.slice(-15)
+          break
+        case '2-week-moving-average-9m':
+          values = values.slice(-22)
+          break
+        case '3-week-moving-average-3m':
+          values = values.slice(-6)
+          break
+        case '3-week-moving-average-6m':
+          values = values.slice(-10)
+          break
+        case '3-week-moving-average-9m':
+          values = values.slice(-15)
+          break
+        case 'monthly-3m':
+          values = values.slice(-3)
+          break
+        case 'monthly-6m':
+          values = values.slice(-6)
+          break
+        case 'monthly-9m':
+          values = values.slice(-9)
+          break
+        case '2-month-moving-average-6m':
+          values = values.slice(-4)
+          break
+        case '2-month-moving-average-9m':
+          values = values.slice(-6)
+          break
+        case 'all':
+          values = values.slice(0)
+          break
+        default:
+          // 'all'
+          values = values.slice(0)
+          break
+      }
+
+      // console.log(values)
 
       let min = ss.min(values)
       let max = ss.max(values)
@@ -1089,7 +1249,7 @@
       return outArray
     }
 
-    function statsForNerds(data, stats) {
+    function statsForNerds(stats) {
       let html = `
         <table>
           <caption><b>Stats for Nerds</b></caption>
@@ -1164,14 +1324,6 @@
       })
 
       switch (duration) {
-        case 'daily-2d':
-          labels = labels.slice(-2)
-          values = values.slice(-2)
-          break
-        case 'daily-3d':
-          labels = labels.slice(-3)
-          values = values.slice(-3)
-          break
         case 'daily-1w':
           labels = labels.slice(-5)
           values = values.slice(-5)
@@ -1204,6 +1356,54 @@
           labels = labels.slice(-180)
           values = values.slice(-180)
           break
+        case '2-day-moving-average-1m':
+          labels = labels.slice(-13)
+          values = values.slice(-13)
+        break
+        case '2-day-moving-average-2m':
+          labels = labels.slice(-22)
+          values = values.slice(-22)
+        break
+        case '2-day-moving-average-90d':
+          labels = labels.slice(-28)
+          values = values.slice(-28)
+        break
+        case '2-day-moving-average-3m':
+          labels = labels.slice(-35)
+          values = values.slice(-35)
+        break
+        case '2-day-moving-average-6m':
+          labels = labels.slice(-67)
+          values = values.slice(-67)
+        break
+        case '2-day-moving-average-9m':
+          labels = labels.slice(-100)
+          values = values.slice(-100)
+        break
+        case '3-day-moving-average-1m':
+          labels = labels.slice(-9)
+          values = values.slice(-9)
+        break
+        case '3-day-moving-average-2m':
+          labels = labels.slice(-16)
+          values = values.slice(-16)
+        break
+        case '3-day-moving-average-90d':
+          labels = labels.slice(-19)
+          values = values.slice(-19)
+        break
+        case '3-day-moving-average-3m':
+          labels = labels.slice(-23)
+          values = values.slice(-23)
+        break
+        case '3-day-moving-average-6m':
+          labels = labels.slice(-45)
+          values = values.slice(-45)
+        break
+        case '3-day-moving-average-9m':
+          labels = labels.slice(-65)
+          values = values.slice(-65)
+        break
         case 'weekly-1m':
           labels = labels.slice(-4)
           values = values.slice(-4)
