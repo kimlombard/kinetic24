@@ -10,5 +10,7 @@
     {"purchaseDate": "2020-09-07", "ExpiryDate": "2020-09-08", "tenor": 1, "yield": 1.44, "dailyYield": 1.44},
     {"purchaseDate": "2020-09-08", "ExpiryDate": "2020-09-09", "tenor": 1, "yield": 1.74, "dailyYield": 1.74},
     {"purchaseDate": "2020-09-09", "ExpiryDate": "2020-09-10", "tenor": 1, "yield": 1.74, "dailyYield": 1.74},
+    {"purchaseDate": "2020-09-10", "ExpiryDate": "2020-09-11", "tenor": 1, "yield": 1.94, "dailyYield": 1.95},
+    {"purchaseDate": "2020-09-11", "ExpiryDate": "2020-09-12", "tenor": 1, "yield": 1.44, "dailyYield": 1.44},
 	]
 }
