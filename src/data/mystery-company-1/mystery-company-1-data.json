@@ -1,16 +1,21 @@
 {
 	"daily": [
-		{"purchaseDate": "2020-08-26", "ExpiryDate": "2020-08-27", "tenor": 1, "yield": 0.97, "dailyYield": 0.97},
-		{"purchaseDate": "2020-08-27", "ExpiryDate": "2020-08-28", "tenor": 1, "yield": 1.36, "dailyYield": 1.36},
-		{"purchaseDate": "2020-08-29", "ExpiryDate": "2020-08-30", "tenor": 1, "yield": 1.06, "dailyYield": 1.06},
-		{"purchaseDate": "2020-08-30", "ExpiryDate": "2020-08-31", "tenor": 1, "yield": 0.80, "dailyYield": 0.80},
-		{"purchaseDate": "2020-09-01", "ExpiryDate": "2020-09-04", "tenor": 3, "yield": 2.12, "dailyYield": 0.71},
-		{"purchaseDate": "2020-09-05", "ExpiryDate": "2020-09-06", "tenor": 1, "yield": 1.82, "dailyYield": 1.82},
-    {"purchaseDate": "2020-09-06", "ExpiryDate": "2020-09-07", "tenor": 1, "yield": 1.14, "dailyYield": 1.14},
-    {"purchaseDate": "2020-09-07", "ExpiryDate": "2020-09-08", "tenor": 1, "yield": 1.44, "dailyYield": 1.44},
-    {"purchaseDate": "2020-09-08", "ExpiryDate": "2020-09-09", "tenor": 1, "yield": 1.74, "dailyYield": 1.74},
-    {"purchaseDate": "2020-09-09", "ExpiryDate": "2020-09-10", "tenor": 1, "yield": 1.74, "dailyYield": 1.74},
-    {"purchaseDate": "2020-09-10", "ExpiryDate": "2020-09-11", "tenor": 1, "yield": 1.94, "dailyYield": 1.95},
-    {"purchaseDate": "2020-09-11", "ExpiryDate": "2020-09-12", "tenor": 1, "yield": 1.44, "dailyYield": 1.44},
+		{"purchaseDate": "2020-08-26", "ExpiryDate": "2020-08-27", "term": 1, "yield": 0.97, "dailyYield": 0.97},
+		{"purchaseDate": "2020-08-27", "ExpiryDate": "2020-08-28", "term": 1, "yield": 1.36, "dailyYield": 1.36},
+		{"purchaseDate": "2020-08-29", "ExpiryDate": "2020-08-30", "term": 1, "yield": 1.06, "dailyYield": 1.06},
+		{"purchaseDate": "2020-08-30", "ExpiryDate": "2020-08-31", "term": 1, "yield": 0.80, "dailyYield": 0.80},
+		{"purchaseDate": "2020-09-01", "ExpiryDate": "2020-09-04", "term": 3, "yield": 2.12, "dailyYield": 0.71},
+		{"purchaseDate": "2020-09-05", "ExpiryDate": "2020-09-06", "term": 1, "yield": 1.82, "dailyYield": 1.82},
+    {"purchaseDate": "2020-09-06", "ExpiryDate": "2020-09-07", "term": 1, "yield": 1.14, "dailyYield": 1.14},
+    {"purchaseDate": "2020-09-07", "ExpiryDate": "2020-09-08", "term": 1, "yield": 1.44, "dailyYield": 1.44},
+    {"purchaseDate": "2020-09-08", "ExpiryDate": "2020-09-09", "term": 1, "yield": 1.74, "dailyYield": 1.74},
+    {"purchaseDate": "2020-09-09", "ExpiryDate": "2020-09-10", "term": 1, "yield": 1.74, "dailyYield": 1.74},
+    {"purchaseDate": "2020-09-10", "ExpiryDate": "2020-09-11", "term": 1, "yield": 1.95, "dailyYield": 1.95},
+    {"purchaseDate": "2020-09-11", "ExpiryDate": "2020-09-12", "term": 1, "yield": 1.44, "dailyYield": 1.44},
+    {"purchaseDate": "2020-09-12", "ExpiryDate": "2020-09-13", "term": 1, "yield": 1.32, "dailyYield": 1.32},
+	],
+	"weekly": [
+	  {"date": "2020-09-05", "yield": 3.98},
+	  {"date": "2020-09-12", "yield": 11.27}
 	]
 }
