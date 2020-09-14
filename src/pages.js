@@ -14,6 +14,11 @@ export default [{
   componentName: 'mti'
 },
 {
+  path: '/exchange',
+  label: 'Exchange',
+  componentName: 'exchange'
+},
+{
   path: '/currently-reviewing',
   label: 'Currently Reviewing',
   componentName: 'currently-reviewing'

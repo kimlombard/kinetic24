@@ -1,0 +1,1546 @@
+<mti>
+  <h1><a href="https://mirrortradinginternational.com/overview/">Mirror Trading International</a></h1>
+  
+  <p>Mirror Trading Internastional (MTI) is a trading company incorporated in South Africa that has been trading since April 2019.</p>
+
+  <p>The company's objective is to grow your Bitcoin. You deposit BTC into your private wallet on MTI's side and they grow your balance by trading in both crypto and forex markets every working day of the week. Daily profits are automatically added to your balance and therefore you earn compound interest daily. As long as the daily trades end in a profit, you continue to grow your investment.</p>
+
+  <p>The minimum deposit requirement is 100 USD, where 200 USD is suggested if you are interested in the referral program, since that automatically qualifies you for various weekly bonuses. As long as you have a balance in your account the company will continue to trade on your behalf with no costs.</p>
+
+  <p>The daily profit breakdown is as follows:
+
+    <ul>
+      <li>40% Members</li>
+      <li>20% Binary Bonus (if applicable)</li>
+      <li>5% P1/P2 Leadership Bonuses (if applicable)</li>
+      <li>25% Traders</li>
+      <li>10% Company</li>
+    </ul>
+  </p>
+
+  <p>Below are some charts that indicate the performance potential using actual trading results.</p>
+
+  <p>Note that while the company has been trading since around April 2019, results are only available from 7 November 2019, as per their daily trading announcements on Telegram. Also, you will notice that there is a dip in results during December, which is due to fewer trading days during the holiday season. Of particular interest is how the company has performed during the COVID-19 pandemic, posting only one day of negative trading thus far.</p>
+
+  <div class="chart">
+    <h3>Daily Results</h3>
+    <div>
+      <button class="button button-clear" id="show-daily-results-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-daily-results-stats">Hide Stats</button>
+    </div>
+      <p class="stats" id="daily-results-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="1w-daily-results">1w</button>
+      </div>
+      <div class="column">
+        <button class="button" id="2w-daily-results">2w</button>
+      </div>
+      <div class="column">
+        <button class="button" id="1m-daily-results">1m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="2m-daily-results">2m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="90d-daily-results">90d</button>
+      </div>
+      <div class="column">
+        <button class="button" id="3m-daily-results">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-daily-results">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-daily-results">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-daily-results">all</button>
+      </div>
+    </div>
+    <div id="daily-results-wrapper">
+      <canvas id="daily-results"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>2-Day Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-2-day-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-2-day-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="2-day-moving-average-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="1m-2-day-moving-average">1m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="2m-2-day-moving-average">2m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="90d-2-day-moving-average">90d</button>
+      </div>
+      <div class="column">
+        <button class="button" id="3m-2-day-moving-average">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-2-day-moving-average">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-2-day-moving-average">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-2-day-moving-average">all</button>
+      </div>
+    </div>
+    <div id="2-day-moving-average-wrapper">
+      <canvas id="2-day-moving-average"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>3-Day Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-3-day-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-3-day-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="3-day-moving-average-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="1m-3-day-moving-average">1m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="2m-3-day-moving-average">2m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="90d-3-day-moving-average">90d</button>
+      </div>
+      <div class="column">
+        <button class="button" id="3m-3-day-moving-average">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-3-day-moving-average">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-3-day-moving-average">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-3-day-moving-average">all</button>
+      </div>
+    </div>
+    <div id="3-day-moving-average-wrapper">
+      <canvas id="3-day-moving-average"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>Weekly Results</h3>
+    <div>
+      <button class="button button-clear" id="show-weekly-results-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-weekly-results-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="weekly-results-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="1m-weekly-results">1m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="2m-weekly-results">2m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="90d-weekly-results">90d</button>
+      </div>
+      <div class="column">
+        <button class="button" id="3m-weekly-results">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-weekly-results">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-weekly-results">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-weekly-results">all</button>
+      </div>
+    </div>
+    <div id="weekly-results-wrapper">
+      <canvas id="weekly-results"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>2-Week Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-2-week-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-2-week-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="2-week-moving-average-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="3m-2-week-moving-average">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-2-week-moving-average">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-2-week-moving-average">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-2-week-moving-average">all</button>
+      </div>
+    </div>
+    <div id="2-week-moving-average-wrapper">
+      <canvas id="2-week-moving-average"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>3-Week Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-3-week-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-3-week-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="3-week-moving-average-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="3m-3-week-moving-average">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-3-week-moving-average">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-3-week-moving-average">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-3-week-moving-average">all</button>
+      </div>
+    </div>
+    <div id="3-week-moving-average-wrapper">
+      <canvas id="3-week-moving-average"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>Monthly Results</h3>
+    <div>
+      <button class="button button-clear" id="show-monthly-results-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-monthly-results-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="monthly-results-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="3m-monthly-results">3m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="6m-monthly-results">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-monthly-results">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-monthly-results">all</button>
+      </div>
+    </div>
+    <div id="monthly-results-wrapper">
+      <canvas id="monthly-results"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>2-Month Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-2-month-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-2-month-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="2-month-moving-average-stats"></p>
+    <div class="row">
+      <div class="column">
+        <button class="button" id="6m-2-month-moving-average">6m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="9m-2-month-moving-average">9m</button>
+      </div>
+      <div class="column">
+        <button class="button" id="all-2-month-moving-average">all</button>
+      </div>
+    </div>
+    <div id="2-month-moving-average-wrapper">
+      <canvas id="2-month-moving-average"></canvas>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>3-Month Moving Average</h3>
+    <div>
+      <button class="button button-clear" id="show-3-month-moving-average-stats">Show Stats</button>
+      <button class="button button-clear" id="hide-3-month-moving-average-stats">Hide Stats</button>
+    </div>
+    <p class="stats" id="3-month-moving-average-stats"></p>
+    <div is="3-month-moving-average-wrapper">
+      <canvas id="3-month-moving-average"></canvas>
+    </div>
+  </div>
+
+  <style>
+    .stats {
+      font-size: small;
+    }
+
+    .button {
+      padding: 0px 1rem;
+    }
+
+    .chart {
+      padding-top: 50px;
+    }
+  </style>
+
+  <script>
+    import moment from 'moment'
+    import * as ss from 'simple-statistics'
+    import Chart from 'chart.js'
+
+    $(document).ready(function() {
+      $.getJSON('src/data/mti/mti-data.json', function(data) {
+        let stats = calculateStats(data.daily)
+				let ctx = '#daily-results'
+        $('#daily-results-stats').html(statsForNerds(stats))
+        drawChart(data.daily, stats, ctx, 'Daily Results', 'all')
+
+        // Hide stats for nerds
+        $('#daily-results-stats').hide()
+
+        // Toggle stats
+        $('#show-daily-results-stats').click(function() {
+          $('#daily-results-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-daily-results-stats').click(function() {
+          $('#daily-results-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+        
+        $('#1w-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-1w')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-1w')
+        })
+        $('#2w-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-2w')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-2w')
+        })
+        $('#1m-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-1m')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-1m')
+        })
+        $('#2m-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-2m')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-2m')
+        })
+        $('#90d-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-90d')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-90d')
+        })
+        $('#3m-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-3m')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-3m')
+        })
+        $('#6m-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-6m')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-6m')
+        })
+        $('#9m-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-9m')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'daily-9m')
+        })
+        $('#all-daily-results').click(function() {
+          let stats = calculateStats(data.daily, 'daily-all')
+          let ctx = '#daily-results'
+
+          $('#daily-results-stats').html(statsForNerds(stats))
+
+          $('#daily-results').remove()
+          $('#daily-results-wrapper').append("<canvas id='daily-results'></canvas>")
+
+          drawChart(data.daily, stats, ctx, 'Daily Results', 'all')
+        })
+
+        // 2-Day Moving Average
+
+        let movingAverageData = calculateMovingAverage(data.daily, 2)
+        stats = calculateStats(movingAverageData, '2-day-moving-average-all')
+        ctx = '#2-day-moving-average'
+        $('#2-day-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '2-Day Moving Average', 'all')
+
+        // Hide stats for nerds
+        $('#2-day-moving-average-stats').hide()
+
+        // Toggle stats for nerds
+        $('#show-2-day-moving-average-stats').click(function() {
+          $('#2-day-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-2-day-moving-average-stats').click(function() {
+          $('#2-day-moving-average-stats').slideUp('slow', function() {
+            // Animation complete
+          })
+        })
+
+
+        $('#1m-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-1m')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-1m')
+        })
+        $('#2m-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-2m')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-2m')
+        })
+        $('#90d-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-90d')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-90d')
+        })
+        $('#3m-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-3m')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-3m')
+        })
+        $('#6m-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-6m')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-6m')
+        })
+        $('#9m-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-9m')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '2-day-moving-average-9m')
+        })
+        $('#all-2-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 2)
+          let stats = calculateStats(movingAverageData, '2-day-moving-average-all')
+          let ctx = '#2-day-moving-average'
+
+          $('#2-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-day-moving-average').remove()
+          $('#2-day-moving-average-wrapper').append("<canvas id='2-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'all')
+        })
+
+        // 3-Day Moving Average
+
+        movingAverageData = calculateMovingAverage(data.daily, 3)
+        stats = calculateStats(movingAverageData, '3-day-moving-average-all')
+        ctx = '#3-day-moving-average'
+        $('#3-day-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '3-Day Moving Average')
+
+        // Hide stats for nerds
+        $('#3-day-moving-average-stats').hide()
+
+        // Toggle stats for nerds
+        $('#show-3-day-moving-average-stats').click(function() {
+          $('#3-day-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-3-day-moving-average-stats').click(function() {
+          $('#3-day-moving-average-stats').slideUp('slow', function() {
+            // Animation complete
+          })
+        })
+
+        $('#1m-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-1m')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-1m')
+        })
+        $('#2m-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-2m')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-2m')
+        })
+        $('#90d-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-90d')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-90d')
+        })
+        $('#3m-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-3m')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-3m')
+        })
+        $('#6m-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-6m')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-6m')
+        })
+        $('#9m-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-9m')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', '3-day-moving-average-9m')
+        })
+        $('#all-3-day-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.daily, 3)
+          let stats = calculateStats(movingAverageData, '3-day-moving-average-all')
+          let ctx = '#3-day-moving-average'
+
+          $('#3-day-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-day-moving-average').remove()
+          $('#3-day-moving-average-wrapper').append("<canvas id='3-day-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, 'Daily Results', 'all')
+        })
+      })
+      $.getJSON('src/data/mti/mti-data.json', function(data) {
+        let stats = calculateStats(data.weekly, 'weekly-all')
+        let ctx = '#weekly-results'
+        $('#weekly-results-stats').html(statsForNerds(stats))
+        drawChart(data.weekly, stats, ctx, 'Weekly Results', 'all')
+
+        // Hide stats
+        $('#weekly-results-stats').hide()
+
+        // Toggle stats
+        $('#show-weekly-results-stats').click(function() {
+          $('#weekly-results-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-weekly-results-stats').click(function() {
+          $('#weekly-results-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#1m-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-1m')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-1m')
+        })
+        $('#2m-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-2m')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-2m')
+        })
+        $('#90d-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-90d')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-90d')
+        })
+        $('#3m-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-3m')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-3m')
+        })
+        $('#6m-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-6m')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-6m')
+        })
+        $('#9m-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-9m')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'weekly-9m')
+        })
+        $('#all-weekly-results').click(function() {
+          let stats = calculateStats(data.weekly, 'weekly-all')
+          let ctx = '#weekly-results'
+
+          $('#weekly-results-stats').html(statsForNerds(stats))
+
+          $('#weekly-results').remove()
+          $('#weekly-results-wrapper').append("<canvas id='weekly-results'></canvas>")
+
+          drawChart(data.weekly, stats, ctx, 'Weekly Results', 'all')
+        })
+
+        // 2-Week Moving Average
+
+        let movingAverageData = calculateMovingAverage(data.weekly, 2)
+        stats = calculateStats(movingAverageData, 'all')
+        ctx = '#2-week-moving-average'
+        $('#2-week-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', 'all')
+
+        // Hide stats
+        $('#2-week-moving-average-stats').hide()
+
+        // Toggle stats
+        $('#show-2-week-moving-average-stats').click(function() {
+          $('#2-week-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-2-week-moving-average-stats').click(function() {
+          $('#2-week-moving-average-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#3m-2-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 2)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-3m')
+          let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-week-moving-average').remove()
+          $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', '2-week-moving-average-3m')
+        })
+        $('#6m-2-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 2)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-6m')
+          let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-week-moving-average').remove()
+          $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', '2-week-moving-average-6m')
+        })
+        $('#9m-2-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 2)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-9m')
+          let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-week-moving-average').remove()
+          $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', '2-week-moving-average-9m')
+        })
+        $('#all-2-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 2)
+          let stats = calculateStats(movingAverageData, '2-week-moving-average-all')
+          let ctx = '#2-week-moving-average'
+
+          $('#2-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-week-moving-average').remove()
+          $('#2-week-moving-average-wrapper').append("<canvas id='2-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Week Moving Average', 'all')
+        })
+
+        // 3-Week Moving Average
+
+        movingAverageData = calculateMovingAverage(data.weekly, 3)
+        stats = calculateStats(movingAverageData, '3-week-moving-average-all')
+        ctx = '#3-week-moving-average'
+        $('#3-week-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '3-week Moving Average')
+
+        // Hide stats
+        $('#3-week-moving-average-stats').hide()
+
+        // Toggle stats
+        $('#show-3-week-moving-average-stats').click(function() {
+          $('#3-week-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-3-week-moving-average-stats').click(function() {
+          $('#3-week-moving-average-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#3m-3-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 3)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-3m')
+          let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-week-moving-average').remove()
+          $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', '3-week-moving-average-3m')
+        })
+        $('#6m-3-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 3)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-6m')
+          let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-week-moving-average').remove()
+          $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', '3-week-moving-average-6m')
+        })
+        $('#9m-3-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 3)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-9m')
+          let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-week-moving-average').remove()
+          $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', '3-week-moving-average-9m')
+        })
+        $('#all-3-week-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.weekly, 3)
+          let stats = calculateStats(movingAverageData, '3-week-moving-average-all')
+          let ctx = '#3-week-moving-average'
+
+          $('#3-week-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-week-moving-average').remove()
+          $('#3-week-moving-average-wrapper').append("<canvas id='3-week-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', 'all')
+        })
+      })
+      $.getJSON('src/data/mti/mti-data.json', function(data) {
+        let stats = calculateStats(data.monthly, 'all')
+        let ctx = '#monthly-results'
+        $('#monthly-results-stats').html(statsForNerds(stats))
+        drawChart(data.monthly, stats, ctx, 'Monthly Results', 'all')
+
+        // Hide stats for nerds
+        $('#monthly-results-stats').hide()
+
+        // Toggle stats
+        $('#show-monthly-results-stats').click(function() {
+          $('#monthly-results-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-monthly-results-stats').click(function() {
+          $('#monthly-results-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#3m-monthly-results').click(function() {
+          let stats = calculateStats(data.monthly, 'monthly-3m')
+          let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
+
+          $('#monthly-results').remove()
+          $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
+
+          drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-3m')
+        })
+        $('#6m-monthly-results').click(function() {
+          let stats = calculateStats(data.monthly, 'monthly-6m')
+          let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
+
+          $('#monthly-results').remove()
+          $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
+
+          drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-6m')
+        })
+        $('#9m-monthly-results').click(function() {
+          let stats = calculateStats(data.monthly, 'monthly-9m')
+          let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
+
+          $('#monthly-results').remove()
+          $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
+
+          drawChart(data.monthly, stats, ctx, 'Monthly Results', 'monthly-9m')
+        })
+        $('#all-monthly-results').click(function() {
+          let stats = calculateStats(data.monthly, 'all')
+          let ctx = '#monthly-results'
+
+          $('#monthly-results-stats').html(statsForNerds(stats))
+
+          $('#monthly-results').remove()
+          $('#monthly-results-wrapper').append("<canvas id='monthly-results'></canvas>")
+
+          drawChart(data.monthly, stats, ctx, 'Monthly Results', 'all')
+        })
+
+        // 2-Monthly Moving Average
+
+        let movingAverageData = calculateMovingAverage(data.monthly, 2)
+        stats = calculateStats(movingAverageData, 'all')
+        ctx = '#2-month-moving-average'
+        $('#2-month-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '2-Month Moving Average', 'all')
+
+        // Hide stats
+        $('#2-month-moving-average-stats').hide()
+
+        // Toggle stats
+        $('#show-2-month-moving-average-stats').click(function() {
+          $('#2-month-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-2-month-moving-average-stats').click(function() {
+          $('#2-month-moving-average-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#6m-2-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 2)
+          let stats = calculateStats(movingAverageData, '2-month-moving-average-6m')
+          let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-month-moving-average').remove()
+          $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Month Moving Average', '2-month-moving-average-6m')
+        })
+        $('#9m-2-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 2)
+          let stats = calculateStats(movingAverageData, '2-month-moving-average-9m')
+          let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-month-moving-average').remove()
+          $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Month Moving Average', '2-month-moving-average-9m')
+        })
+        $('#all-2-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 2)
+          let stats = calculateStats(movingAverageData, 'all')
+          let ctx = '#2-month-moving-average'
+
+          $('#2-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#2-month-moving-average').remove()
+          $('#2-month-moving-average-wrapper').append("<canvas id='2-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '2-Month Moving Average', 'all')
+        })
+
+        // 3-Monthly Moving Average
+
+        movingAverageData = calculateMovingAverage(data.monthly, 3)
+        stats = calculateStats(movingAverageData)
+        ctx = '#3-month-moving-average'
+        $('#3-month-moving-average-stats').html(statsForNerds(stats))
+        drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', 'all')
+
+        // Hide stats
+        $('#3-month-moving-average-stats').hide()
+
+        // Toggle stats
+        $('#show-3-month-moving-average-stats').click(function() {
+          $('#3-month-moving-average-stats').slideDown('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#hide-3-month-moving-average-stats').click(function() {
+          $('#3-month-moving-average-stats').slideUp('slow', function() {
+            // Animation complete.
+          })
+        })
+
+        $('#6m-3-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 3)
+          let stats = calculateStats(movingAverageData)
+          let ctx = '#3-month-moving-average'
+
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-month-moving-average').remove()
+          $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', '3-month-moving-average-6m')
+        })
+        $('#9m-3-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 3)
+          let stats = calculateStats(movingAverageData)
+          let ctx = '#3-month-moving-average'
+
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-month-moving-average').remove()
+          $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', '3-month-moving-average-9m')
+        })
+        $('#all-3-month-moving-average').click(function() {
+          let movingAverageData = calculateMovingAverage(data.monthly, 3)
+          let stats = calculateStats(movingAverageData)
+          let ctx = '#3-month-moving-average'
+
+          $('#3-month-moving-average-stats').html(statsForNerds(stats))
+
+          $('#3-month-moving-average').remove()
+          $('#3-month-moving-average-wrapper').append("<canvas id='3-month-moving-average'></canvas>")
+
+          drawChart(movingAverageData, stats, ctx, '3-Month Moving Average', 'all')
+        })
+      })
+    })
+
+    function logData(data) {
+      data.forEach(item => console.log("date: " + item.date + ", value: " + item.value))
+    }
+
+    function calculateStats(data, duration) {
+      let values = []
+      data.forEach(item => values.push(item.value))
+
+      switch (duration) {
+        case 'daily-1w':
+          values = values.slice(-5)
+          // console.log(values)
+          break
+        case 'daily-2w':
+          values = values.slice(-10)
+          break
+        case 'daily-1m':
+          values = values.slice(-20)
+          break
+        case 'daily-2m':
+          values = values.slice(-40)
+          break
+        case 'daily-90d':
+          values = values.slice(-50)
+          break
+        case 'daily-3m':
+          values = values.slice(-60)
+          break
+        case 'daily-6m':
+          values = values.slice(-120)
+          break
+        case 'daily-9m':
+          values = values.slice(-180)
+          break
+        case '2-day-moving-average-1m':
+          values = values.slice(-13)
+        break
+        case '2-day-moving-average-2m':
+          values = values.slice(-22)
+        break
+        case '2-day-moving-average-90d':
+          values = values.slice(-28)
+        break
+        case '2-day-moving-average-3m':
+          values = values.slice(-35)
+        break
+        case '2-day-moving-average-6m':
+          values = values.slice(-67)
+        break
+        case '2-day-moving-average-9m':
+          values = values.slice(-100)
+        break
+        case '3-day-moving-average-1m':
+          values = values.slice(-9)
+        break
+        case '3-day-moving-average-2m':
+          values = values.slice(-16)
+        break
+        case '3-day-moving-average-90d':
+          values = values.slice(-19)
+        break
+        case '3-day-moving-average-3m':
+          values = values.slice(-23)
+        break
+        case '3-day-moving-average-6m':
+          values = values.slice(-45)
+        break
+        case '3-day-moving-average-9m':
+          values = values.slice(-65)
+        break
+        case 'weekly-1m':
+          values = values.slice(-4)
+          break
+        case 'weekly-2m':
+          values = values.slice(-8)
+          break
+        case 'weekly-90d':
+          values = values.slice(-10)
+          break
+        case 'weekly-3m':
+          values = values.slice(-12)
+          break
+        case 'weekly-6m':
+          values = values.slice(-24)
+          break
+        case 'weekly-9m':
+          values = values.slice(-36)
+          break
+        case '2-week-moving-average-3m':
+          values = values.slice(-8)
+          break
+        case '2-week-moving-average-6m':
+          values = values.slice(-15)
+          break
+        case '2-week-moving-average-9m':
+          values = values.slice(-22)
+          break
+        case '3-week-moving-average-3m':
+          values = values.slice(-6)
+          break
+        case '3-week-moving-average-6m':
+          values = values.slice(-10)
+          break
+        case '3-week-moving-average-9m':
+          values = values.slice(-15)
+          break
+        case 'monthly-3m':
+          values = values.slice(-3)
+          break
+        case 'monthly-6m':
+          values = values.slice(-6)
+          break
+        case 'monthly-9m':
+          values = values.slice(-9)
+          break
+        case '2-month-moving-average-6m':
+          values = values.slice(-4)
+          break
+        case '2-month-moving-average-9m':
+          values = values.slice(-6)
+          break
+        case 'all':
+          values = values.slice(0)
+          break
+        default:
+          // 'all'
+          values = values.slice(0)
+          break
+      }
+
+      // console.log(values)
+
+      let min = ss.min(values)
+      let max = ss.max(values)
+      let mean = ss.mean(values)
+      let variance = ss.variance(values)
+      let standardDeviation = ss.standardDeviation(values)
+      let sd1_LowerValue = mean - standardDeviation
+      let sd1_UpperValue = mean + standardDeviation
+      let sd2_LowerValue = mean - (standardDeviation * 2)
+      let sd2_UpperValue = mean + (standardDeviation * 2)
+
+      // console.log("min: " + min)
+      // console.log("max: " + max)
+      // console.log("mean: " + mean)
+      // console.log("variance: " + variance)
+      // console.log("standard deviation: " + standardDeviation)
+
+      return {min, max, mean, variance, standardDeviation, sd1_LowerValue, sd1_UpperValue, sd2_LowerValue, sd2_UpperValue}
+    }
+
+    function calculateMovingAverage(array, numberOfDays) {
+      let total = 0
+      let average = 0
+      let outArray = []
+
+      for (let index = 0; index < array.length; index++) {
+        total = total + array[index].value
+
+        if ((index + 1) % numberOfDays == 0) {
+
+          average = total / numberOfDays
+          outArray.push({date: array[index].date, value: average})
+          total = 0
+        }
+      }
+
+      return outArray
+    }
+
+    function statsForNerds(stats) {
+      let html = `
+        <table>
+          <caption><b>Stats for Nerds</b></caption>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>min: ${stats.min.toFixed(4)}</td>
+              <td>mean: ${stats.mean.toFixed(4)}</td>
+              <td>max: ${stats.max.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>variance: ${stats.variance.toFixed(4)}</td>
+              <td colspan="2">standard deviation: ${stats.standardDeviation.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>standard deviation 68% (lower): ${stats.sd1_LowerValue.toFixed(4)}</td>
+              <td colspan="2">standard deviation 68% (upper): ${stats.sd1_UpperValue.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>standard deviation 95% (lower): ${stats.sd2_LowerValue.toFixed(4)}</td>
+              <td colspan="2">standard deviation 95% (upper): ${stats.sd2_UpperValue.toFixed(4)}</td>
+            </tr>
+          </tbody>
+        </table>`
+
+        return html
+    }
+
+    function drawChart(data, stats, ctxID, label, duration) {
+      let labels = []
+      let values = []
+      let meanValues = []
+      let sd1_UpperValues = [], sd1_LowerValues = []
+      let sd2_UpperValues = [], sd2_LowerValues = []
+      let sd1_UpperValue, sd1_LowerValue
+      let sd2_UpperValue, sd2_LowerValue
+
+      const chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+      }
+
+      sd1_UpperValue = stats.mean + stats.standardDeviation
+      sd1_LowerValue = stats.mean - stats.standardDeviation
+      sd2_UpperValue = stats.mean + (stats.standardDeviation * 2)
+      sd2_LowerValue = stats.mean - (stats.standardDeviation * 2)
+
+      data.forEach((item) => {
+        labels.push(item.date)
+        values.push(item.value.toFixed(4))
+      })
+
+      values.forEach(() => {
+        meanValues.push(stats.mean.toFixed(4))
+
+        sd1_UpperValues.push(sd1_UpperValue.toFixed(4))
+        sd1_LowerValues.push(sd1_LowerValue.toFixed(4))
+
+        sd2_UpperValues.push(sd2_UpperValue.toFixed(4))
+        sd2_LowerValues.push(sd2_LowerValue.toFixed(4))
+      })
+
+      switch (duration) {
+        case 'daily-1w':
+          labels = labels.slice(-5)
+          values = values.slice(-5)
+          break
+        case 'daily-2w':
+          labels = labels.slice(-10)
+          values = values.slice(-10)
+          break
+        case 'daily-1m':
+          labels = labels.slice(-20)
+          values = values.slice(-20)
+          break
+        case 'daily-2m':
+          labels = labels.slice(-40)
+          values = values.slice(-40)
+          break
+        case 'daily-90d':
+          labels = labels.slice(-50)
+          values = values.slice(-50)
+          break
+        case 'daily-3m':
+          labels = labels.slice(-60)
+          values = values.slice(-60)
+          break
+        case 'daily-6m':
+          labels = labels.slice(-120)
+          values = values.slice(-120)
+          break
+        case 'daily-9m':
+          labels = labels.slice(-180)
+          values = values.slice(-180)
+          break
+        case '2-day-moving-average-1m':
+          labels = labels.slice(-13)
+          values = values.slice(-13)
+        break
+        case '2-day-moving-average-2m':
+          labels = labels.slice(-22)
+          values = values.slice(-22)
+        break
+        case '2-day-moving-average-90d':
+          labels = labels.slice(-28)
+          values = values.slice(-28)
+        break
+        case '2-day-moving-average-3m':
+          labels = labels.slice(-35)
+          values = values.slice(-35)
+        break
+        case '2-day-moving-average-6m':
+          labels = labels.slice(-67)
+          values = values.slice(-67)
+        break
+        case '2-day-moving-average-9m':
+          labels = labels.slice(-100)
+          values = values.slice(-100)
+        break
+        case '3-day-moving-average-1m':
+          labels = labels.slice(-9)
+          values = values.slice(-9)
+        break
+        case '3-day-moving-average-2m':
+          labels = labels.slice(-16)
+          values = values.slice(-16)
+        break
+        case '3-day-moving-average-90d':
+          labels = labels.slice(-19)
+          values = values.slice(-19)
+        break
+        case '3-day-moving-average-3m':
+          labels = labels.slice(-23)
+          values = values.slice(-23)
+        break
+        case '3-day-moving-average-6m':
+          labels = labels.slice(-45)
+          values = values.slice(-45)
+        break
+        case '3-day-moving-average-9m':
+          labels = labels.slice(-65)
+          values = values.slice(-65)
+        break
+        case 'weekly-1m':
+          labels = labels.slice(-4)
+          values = values.slice(-4)
+          break
+        case 'weekly-2m':
+          labels = labels.slice(-8)
+          values = values.slice(-8)
+          break
+        case 'weekly-90d':
+          labels = labels.slice(-10)
+          values = values.slice(-10)
+          break
+        case 'weekly-3m':
+          labels = labels.slice(-12)
+          values = values.slice(-12)
+          break
+        case 'weekly-6m':
+          labels = labels.slice(-24)
+          values = values.slice(-24)
+          break
+        case 'weekly-9m':
+          labels = labels.slice(-36)
+          values = values.slice(-36)
+          break
+        case '2-week-moving-average-3m':
+          labels = labels.slice(-8)
+          values = values.slice(-8)
+          break
+        case '2-week-moving-average-6m':
+          labels = labels.slice(-15)
+          values = values.slice(-15)
+          break
+        case '2-week-moving-average-9m':
+          labels = labels.slice(-22)
+          values = values.slice(-22)
+          break
+        case '3-week-moving-average-3m':
+          labels = labels.slice(-6)
+          values = values.slice(-6)
+          break
+        case '3-week-moving-average-6m':
+          labels = labels.slice(-10)
+          values = values.slice(-10)
+          break
+        case '3-week-moving-average-9m':
+          labels = labels.slice(-15)
+          values = values.slice(-15)
+          break
+        case 'monthly-3m':
+          labels = labels.slice(-3)
+          values = values.slice(-3)
+          break
+        case 'monthly-6m':
+          labels = labels.slice(-6)
+          values = values.slice(-6)
+          break
+        case 'monthly-9m':
+          labels = labels.slice(-9)
+          values = values.slice(-9)
+          break
+        case '2-month-moving-average-6m':
+          labels = labels.slice(-4)
+          values = values.slice(-4)
+          break
+        case '2-month-moving-average-9m':
+          labels = labels.slice(-6)
+          values = values.slice(-6)
+          break
+        case 'all':
+          labels = labels.slice(0)
+          values = values.slice(0)
+          break
+        default:
+          // 'all'
+          labels = labels.slice(0)
+          values = values.slice(0)
+          break
+      }
+      
+      // let ctx = $('#daily-results')
+      let ctx = $(ctxID)
+      
+      const config = {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: label,
+            backgroundColor: chartColors.red,
+            borderColor: chartColors.red,
+            fill: false,
+            data: values
+          }, {
+            label: 'Mean',
+            backgroundColor: chartColors.grey,
+            borderColor: chartColors.grey,
+            borderWidth: 3,
+            fill: false,
+            data: meanValues
+          }, {
+            label: 'Standard Deviation 68% (Upper)',
+            backgroundColor: chartColors.blue,
+            borderColor: chartColors.blue,
+            borderWidth: 3,
+            fill: false,
+            data: sd1_UpperValues
+          }, {
+            label: 'Standard Deviation 68% (Lower)',
+            backgroundColor: chartColors.blue,
+            borderColor: chartColors.blue,
+            borderWidth: 3,
+            fill: false,
+            data: sd1_LowerValues
+          }, {
+            label: 'Standard Deviation 95% (Upper)',
+            backgroundColor: chartColors.purple,
+            borderColor: chartColors.purple,
+            borderWidth: 3,
+            fill: false,
+            data: sd2_UpperValues
+          }, {
+            label: 'Standard Deviation 95% (Lower)',
+            backgroundColor: chartColors.purple,
+            borderColor: chartColors.purple,
+            borderWidth: 3,
+            fill: false,
+            data: sd2_LowerValues
+          }],
+        },
+        options: {
+          responsive: true
+        }
+      }
+
+      let myChart = new Chart(ctx, config)
+      // window.myChart = new Chart(ctx, config)
+      // return myChart
+    }
+  </script>
+</mti>
