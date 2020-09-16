@@ -14,9 +14,9 @@ export default [{
   componentName: 'mti'
 },
 {
-  path: '/exchange',
-  label: 'Exchange',
-  componentName: 'exchange'
+  path: '/mining',
+  label: 'Mining',
+  componentName: 'mining'
 },
 {
   path: '/currently-reviewing',

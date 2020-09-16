@@ -6,4 +6,92 @@
   <p>Mystery Company 1 is a crypto trading exchange that offers enticing returns around 1-200% per month based on your risk appetite. They offer currencies to be bought and sold on the exchange, options, ETFs, and dual currency trades.</p>
 
   <p>Mystery Company 2 mines Bitcoin (BTC) and Bitcoin Vault (BTCV) and has various plans which earn a monthly commission based on the hash rate of transactions performed for the currency of your choice. Returns are estimated around 20% per month but may vary based on the demand of the chosen currency.</p>
+
+  <hr>
+
+  <h2>Update</h2>
+
+  <h3>Crypto Exchange</h3>
+  
+  <p>Trading directly on the exchange offers additional opportunities to achieve rewarding growth potential, typically between 20-40% per month.</p>
+
+  <p><strong>Note:</strong> After 17 days this trading experiment has concluded with mixed results.</p>
+
+  <p><strong>Lessons Learned:</strong> Attractive yields of around 1% per day should mean around 30% per month. In reality, it appeared to be less than that. This could be due to a combination of a realatively small trading amount of around $500 and the commission fees. I would deem this an attractive opportunity if trading with a larger amount of, say, $10,000.</p>
+
+  <p>Here are the trading results for posterity:</p>
+
+  <div id="exchange-results"></div>
+
+  <script>
+  	$(document).ready(function() {
+  		let openHtml = `
+				<table>
+					<caption>Exchange Trading Results</caption>
+					<thead>
+						<tr>
+							<th>Product Name</th>
+							<th>Purchase Date</th>
+							<th>Expiry Date</th>
+							<th>Invest Amount</th>
+							<th>Linked Price</th>
+							<th>Term</th>
+							<th>Yield</th>
+							<th>Daily Yield</th>
+							<th>Settled Price</th>
+							<th>Settled Amount</th>
+						</tr>
+					</thead>
+					<tbody>`
+
+				let closeHtml = `
+					</tbody>
+				</table>`
+				
+  		$.getJSON('src/data/exchange/exchange-data.json', function(data) {
+  			let productNames = [],
+  				purchaseDates = [],
+  				expiryDates = [],
+  				investAmounts = [],
+  				linkedPrices = [],
+  				terms = [],
+  				yields = [],
+  				dailyYields = [],
+  				settledPrices = [],
+  				settledAmounts = []
+
+  			data.daily.forEach(item => {
+  				productNames.push(item.productName)
+  				purchaseDates.push(item.purchaseDate)
+  				expiryDates.push(item.expiryDate)
+  				investAmounts.push(item.investAmount)
+  				linkedPrices.push(item.linkedPrice)
+  				terms.push(item.term)
+  				yields.push(item.yield)
+  				dailyYields.push(item.dailyYield)
+  				settledPrices.push(item.settledPrice)
+  				settledAmounts.push(item.settledAmount)
+  			})
+
+  			let tbody = ""
+
+  			for (let x = 0; x < productNames.length; x++) {
+  				tbody += "<tr>" + 
+  					"<td>" + productNames[x] + "</td>" + 
+  					"<td>" + purchaseDates[x] + "</td>" + 
+  					"<td>" + expiryDates[x] + "</td>" + 
+  					"<td>" + investAmounts[x] + "</td>" + 
+  					"<td>" + linkedPrices[x] + "</td>" + 
+  					"<td>" + terms[x] + "</td>" + 
+  					"<td>" + yields[x] + "</td>" + 
+  					"<td>" + dailyYields[x] + "</td>" + 
+  					"<td>" + settledPrices[x] + "</td>" + 
+  					"<td>" + settledAmounts[x] + "</td>" + 
+  					"</tr>"
+  			}
+
+  			$('#exchange-results').html(openHtml + tbody + closeHtml)
+  		})
+  	})
+  </script>
 </currently-reviewing>
