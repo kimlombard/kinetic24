@@ -16,7 +16,7 @@
     {"productName": "DC-USDT-14Sep20-10625", "purchaseDate": "2020-09-13 16:02:43", "EepiryDate": "2020-09-14 16:00:00", "investAmount": "$478", "linkedPrice": "$10,625", "term": "1 Days", "yield": 0.76, "dailyYield": 0.76, "settledPrice": "$10,376.357", "settledAmount": "0.04533014 BTC"},
     {"productName": "DC-BTC-15Sep20-10250", "purchaseDate": "2020-09-14 16:03:46", "expiryDate": "2020-09-15 16:00:00", "investAmount": "0.045 BTC", "linkedPrice": "$10,250", "term": "1 Days", "yield": 1.32, "dailyYield": 1.32, "settledPrice": "$10,739.6697", "settledAmount": "467.3385 USDT"},
     {"productName": "DC-BTC-16Sep20-10750", "purchaseDate": "2020-09-15 19:14:47", "expiryDate": "2020-09-16 16:00:00", "investAmount": "0.043 BTC", "linkedPrice": "$10,750", "term": "1 Days", "yield": 0.97, "dailyYield": 0.97, "settledPrice": "$10,885.483", "settledAmount": "466.733825 USDT"},
-    {"productName": "DC-USDT-17Sep20-11000", "purchaseDate": "2020-09-16 16:02:25", "expiryDate": "2020-09-17 16:00:00", "investAmount": "466 USDT", "linkedPrice": "$11,000", "term": "1 Days", "yield": 0.93, "dailyYield": 0.93, "settledPrice": "", "settledAmount": ""}
+    {"productName": "DC-USDT-17Sep20-11000", "purchaseDate": "2020-09-16 16:02:25", "expiryDate": "2020-09-17 16:00:00", "investAmount": "466 USDT", "linkedPrice": "$11,000", "term": "1 Days", "yield": 0.93, "dailyYield": 0.93, "settledPrice": "$10,873.7436", "settledAmount": "0.04275761 BTC"}
   ],
   "weekly": [
     {"date": "2020-09-05", "yield": 4.69},
