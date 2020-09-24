@@ -9,9 +9,9 @@ export default [{
   componentName: 'about'
 }, 
 {
-  path: '/mti',
-  label: 'MTI',
-  componentName: 'mti'
+  path: '/investing-club',
+  label: 'Investing Club',
+  componentName: 'investing-club'
 },
 {
   path: '/mining',

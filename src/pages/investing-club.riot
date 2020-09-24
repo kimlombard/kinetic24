@@ -1,9 +1,9 @@
 <mti>
-  <h1><a href="https://mirrortradinginternational.com/overview/">Mirror Trading International</a></h1>
+  <h1>Investment Club</h1>
   
-  <p>Mirror Trading Internastional (MTI) is a trading company incorporated in South Africa that has been trading since April 2019.</p>
+  <p>This investing club is a trading company incorporated in South Africa that has been trading since April 2019.</p>
 
-  <p>The company's objective is to grow your Bitcoin. You deposit BTC into your private wallet on MTI's side and they grow your balance by trading in both crypto and forex markets every working day of the week. Daily profits are automatically added to your balance and therefore you earn compound interest daily. As long as the daily trades end in a profit, you continue to grow your investment.</p>
+  <p>The company's objective is to grow your Bitcoin. You deposit BTC into your private wallet on the company's side and they grow your balance by trading in both crypto and forex markets every working day of the week. Daily profits are automatically added to your balance and therefore you earn compound interest daily. As long as the daily trades end in a profit, you continue to grow your investment.</p>
 
   <p>The minimum deposit requirement is 100 USD, where 200 USD is suggested if you are interested in the referral program, since that automatically qualifies you for various weekly bonuses. As long as you have a balance in your account the company will continue to trade on your behalf with no costs.</p>
 
@@ -301,7 +301,7 @@
     import Chart from 'chart.js'
 
     $(document).ready(function() {
-      $.getJSON('src/data/mti/mti-data.json', function(data) {
+      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
         let stats = calculateStats(data.daily)
 				let ctx = '#daily-results'
         $('#daily-results-stats').html(statsForNerds(stats))
@@ -642,7 +642,7 @@
           drawChart(movingAverageData, stats, ctx, 'Daily Results', 'all')
         })
       })
-      $.getJSON('src/data/mti/mti-data.json', function(data) {
+      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
         let stats = calculateStats(data.weekly, 'weekly-all')
         let ctx = '#weekly-results'
         $('#weekly-results-stats').html(statsForNerds(stats))
@@ -888,7 +888,7 @@
           drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', 'all')
         })
       })
-      $.getJSON('src/data/mti/mti-data.json', function(data) {
+      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
         let stats = calculateStats(data.monthly, 'all')
         let ctx = '#monthly-results'
         $('#monthly-results-stats').html(statsForNerds(stats))
