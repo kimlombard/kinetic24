@@ -1,4 +1,4 @@
-<mti>
+<investment-club>
   <h1>Investment Club</h1>
   
   <p>This investing club is a trading company incorporated in South Africa that has been trading since April 2019.</p>
@@ -301,7 +301,7 @@
     import Chart from 'chart.js'
 
     $(document).ready(function() {
-      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
+      $.getJSON('src/data/investment-club/investment-club-data.json', function(data) {
         let stats = calculateStats(data.daily)
 				let ctx = '#daily-results'
         $('#daily-results-stats').html(statsForNerds(stats))
@@ -642,7 +642,7 @@
           drawChart(movingAverageData, stats, ctx, 'Daily Results', 'all')
         })
       })
-      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
+      $.getJSON('src/data/investment-club/investment-club-data.json', function(data) {
         let stats = calculateStats(data.weekly, 'weekly-all')
         let ctx = '#weekly-results'
         $('#weekly-results-stats').html(statsForNerds(stats))
@@ -888,7 +888,7 @@
           drawChart(movingAverageData, stats, ctx, '3-Week Moving Average', 'all')
         })
       })
-      $.getJSON('src/data/investing-club/investing-club-data.json', function(data) {
+      $.getJSON('src/data/investment-club/investment-club-data.json', function(data) {
         let stats = calculateStats(data.monthly, 'all')
         let ctx = '#monthly-results'
         $('#monthly-results-stats').html(statsForNerds(stats))
@@ -1543,4 +1543,4 @@
       // return myChart
     }
   </script>
-</mti>
+</investment-club>
